@@ -17,14 +17,25 @@ To create a Cross Situational Dataset, you need to create a `TwoSituationDataset
 
 You might want to use the same string for different categories. For example, you can use the same string for the color `orange` and the object `orange`.
 
-You might want to use the same label for several different string in a categorie. For example, `middle` and `center` can be used to describe the same position, with only one unique label for both. In that case you can define those positions as follow: `positions = ['left', ('center', 'middle'), 'right']`. 
+You might want to use the same label for several different string in a categorie. For example, `middle` and `center` can be used to describe the same position, with only one unique label for both. In that case you can define those positions as follow:  
+
+```
+positions = ['left', ('center', 'middle'), 'right']
+```  
+
+Both `center` and `middle` will be labeled as `center` (first value of the tuple).
 
 ### Access the dataset
 
 Once the TwoSituationDataset object is created, you can access the dataset as follow:
-- `dataset.X` : numpy array of shape (n_sentences, n_words, n_categories)
-- `dataset.Y` : numpy array of shape (n_sentences, n_words)
+- `dataset.X` : numpy array of shape (n_sentences, n_steps, n_vocabulary)
+- `dataset.Y` : numpy array of shape (n_sentences, n_labels)
 
+With:  
+`n_sentences` the number of sentences in the dataset  
+`n_steps` the maximum number of words in a sentence  
+`n_vocabulary` the number of different words in the dataset  
+`n_labels` the number of different labels in the dataset.
 
 ## Example
 
