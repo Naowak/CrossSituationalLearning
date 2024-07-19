@@ -6,7 +6,7 @@ OBJECT = 2
 COLOR = 3
 NB_ROLES = 4
 
-class TwoSituationDataset:
+class TwoSituationCSLDataset:
     """Class to create a dataset of sentences, their roles and predicates."""
 
     def __init__(self, objects, colors, positions):
@@ -23,7 +23,7 @@ class TwoSituationDataset:
         self.positions = positions
 
         # Create one situation datasets
-        self.osb = OneSituationDataset(objects, colors, positions)
+        self.osb = OneSituationCSLDataset(objects, colors, positions)
         self.sentences, self.roles = self._combine_situation()
         self.predicates = [[p1, p2] for p1 in self.osb.predicates for p2 in self.osb.predicates]
 
@@ -48,7 +48,7 @@ class TwoSituationDataset:
 
 
 
-class OneSituationDataset:
+class OneSituationCSLDataset:
     """Class to create a dataset of sentences, their roles and predicates."""
     
     def __init__(self, objects, colors, positions):
